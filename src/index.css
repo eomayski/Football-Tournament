@@ -1,0 +1,94 @@
+/* Дефиниране на глобални цветове, вдъхновени от дизайна */
+:root {
+  --bg-dark: #0b132b;       /* Основен тъмносин фон за сайта */
+  --bg-header: #111e3e;     /* Малко по-светъл фон за хедъра */
+  --text-main: #ffffff;     /* Основен бял текст */
+  --text-muted: #8b9bb4;    /* Сив/заглушен текст за неактивни линкове */
+  --accent-blue: #38bdf8;   /* Светлосиньо за активни елементи и ховър ефекти */
+  --border-glow: rgba(56, 189, 248, 0.3); /* Леко сияние за границите */
+}
+
+/* Базови стилове за цялото приложение */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Стилове за Хедъра --- */
+
+.header {
+  background-color: var(--bg-header);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-glow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.header-title:hover {
+  color: var(--accent-blue);
+}
+
+.header-nav {
+  display: flex;
+  gap: 2.5rem; /* Разстояние между линковете */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+}
+
+/* Клас за активната страница */
+.nav-link.active {
+  color: var(--accent-blue);
+  border-bottom-color: var(--accent-blue);
+}
+
+.header-profile button {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.header-profile button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent-blue);
+}
+
+.profile-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-main);
+}
