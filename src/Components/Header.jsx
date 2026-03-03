@@ -1,18 +1,21 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import Logo from '/images/Logo.svg'
 
 const Header = () => {
     return (
         <header className="header">
 
             {/* Лого / Заглавие */}
+                <Link to="/" className='logo-link'>
             <div className="header-logo">
-                <h1 className="header-title">Football Tournament</h1>
+                <img className='site-logo' src={Logo} alt="Logo" />
             </div>
+                </Link>
 
             {/* Навигация с NavLink */}
             <nav className="header-nav">
                 <NavLink
-                    to="/matches"
+                    to="/"
                     className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
                 >
                     Matches

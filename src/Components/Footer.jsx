@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <p className="footer-text">
-        &copy; {currentYear} <span className="footer-accent">Sirma Academy Final Exam</span>
+        &copy; {currentYear} <span className="footer-accent">Sirma Academy</span> Final Exam
       </p>
     </footer>
   );
