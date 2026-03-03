@@ -1,9 +1,11 @@
+import FileUploader from "../FileUploader.jsx";
 import GroupStage from "./GroupeView.jsx";
 import MatchCard from "./MatchCard.jsx";
 
 const BracketView = () => {
     return (
         <div className="bracket-wrapper">
+            <FileUploader/>
             <GroupStage/>
             <div className="bracket-container">
 
