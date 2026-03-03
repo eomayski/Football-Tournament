@@ -1,8 +1,10 @@
+import GroupStage from "./GroupeView.jsx";
 import MatchCard from "./MatchCard.jsx";
 
 const BracketView = () => {
     return (
         <div className="bracket-wrapper">
+            <GroupStage/>
             <div className="bracket-container">
 
                 {/* Round of 16 Column */}
