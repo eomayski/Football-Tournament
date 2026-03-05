@@ -23,7 +23,6 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* background: var(--bg-dark); */
     color: var(--text-main);
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
@@ -77,7 +76,6 @@ a {
     text-transform: uppercase;
     letter-spacing: 1px;
     padding-bottom: 5em 0;
-    border-bottom: 2px solid transparent;
     transition: all 0.3s ease;
 }
 
@@ -87,7 +85,6 @@ a {
 
 .nav-link.active {
     color: var(--accent-blue);
-    border-bottom-color: var(--accent-blue);
 }
 
 
@@ -117,12 +114,6 @@ a {
     width: auto;
     cursor: pointer;
 }
-
-.site-logo:hover {
-    height: 4em;
-    width: auto;
-}
-
 
 .group-stage-wrapper {
 	display: flex;

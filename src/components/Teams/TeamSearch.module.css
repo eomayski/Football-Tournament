@@ -1,0 +1,235 @@
+/* --- SEARCH PART --- */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 40%;
+    margin: 2em auto;
+}
+
+.searchSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent-blue, #38bdf8);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    appearance: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem 3rem 1rem 1rem;
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.input:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.input:focus {
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.1);
+}
+
+.dropdown {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    max-height: 18em;
+    overflow-y: auto;
+    padding: 0;
+    list-style: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.dropdown::-webkit-scrollbar {
+    display: none;
+}
+
+.listItem {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 1rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.listItem:last-child {
+    border-bottom: none;
+}
+
+.listItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.message {
+    padding: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+/* --- TEAM ROSTER --- */
+.tableWrapper {
+    background: rgba(17, 30, 62, 0.7);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.tableHeader {
+    display: flex;
+    gap: 1em;
+    background: var(--bg-header);
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.teamName {
+    margin: 0;
+    color: var(--accent-blue, #38bdf8);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table thead,
+.tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table tbody {
+    display: block;
+    max-height:50svh;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.th {
+    padding: 1rem;
+    color: var(--text-muted, #8b9bb4);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    user-select: none;
+    background: var(--bg-header);
+}
+
+.th:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.td {
+    padding: 1rem;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.tr {
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.colNumber {
+    width: 20%;
+    text-align: center;
+}
+
+.colName {
+    width: 60%;
+}
+
+.colPosition {
+    width: 20%;
+    text-align: center;
+}
+
+.td.colNumber,
+.td.colPosition {
+    font-weight: 600;
+}
+
+.posGF {
+    color: #facc15;
+}
+
+.posDF {
+    color: #38bdf8;
+}
+
+.posMD {
+    color: #4ade80;
+}
+
+.posFW {
+    color: #f87171;
+}
