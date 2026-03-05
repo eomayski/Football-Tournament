@@ -1,40 +1,52 @@
 export const organizeTournament = (matchesObj) => {
-
+    
     const all = Object.values(matchesObj).sort((a, b) => Number(a.ID) - Number(b.ID));
-    let cursor = all.length - 1;
+    if (all.length === 0) return {};
 
-    const final = all[cursor];
-
-    const knockoutThreshold = all.length > 80 ? 72 : (all.length > 55 ? 48 : 36);
-    const totalKnockoutMatches = all.length - knockoutThreshold;
-    const hasThirdPlace = totalKnockoutMatches % 2 === 0 && totalKnockoutMatches > 0;
-
+    let cursor = all.length;
+    const final = all[--cursor];
+    
+    const hasThirdPlace = (all.length - 36) % 2 === 0 && all.length !== 51;
     const thirdPlace = hasThirdPlace ? all[--cursor] : null;
 
-    const semiFinals = all.slice(cursor - 2, cursor);
+    const semisRaw = all.slice(cursor - 2, cursor);
     cursor -= 2;
-
-    const quarterFinals = all.slice(cursor - 4, cursor);
+    const quartersRaw = all.slice(cursor - 4, cursor);
     cursor -= 4;
-
-    const roundOf16 = all.slice(cursor - 8, cursor);
+    const r16Raw = all.slice(cursor - 8, cursor);
     cursor -= 8;
+    const r32Raw = all.length > 80 ? all.slice(cursor - 16, cursor) : [];
 
-    let roundOf32 = [];
-    if (all.length > 80) {
-        roundOf32 = all.slice(cursor - 16, cursor);
-        cursor -= 16;
-    }
+    
+    const findSourceMatches = (currentMatch, previousRoundRaw) => {
+        if (!currentMatch) return [null, null];
+        
+        const matchA = previousRoundRaw.find(m => 
+            m.ATeamID === currentMatch.ATeamID || m.BTeamID === currentMatch.ATeamID
+        );
+        const matchB = previousRoundRaw.find(m => 
+            m.ATeamID === currentMatch.BTeamID || m.BTeamID === currentMatch.BTeamID
+        );
+        
+        return [matchA, matchB];
+    };
 
-    const groupStage = all.slice(0, cursor);
+    
+    const sortedQuarters = semisRaw.flatMap(semi => findSourceMatches(semi, quartersRaw));
+
+    const sortedR16 = sortedQuarters.flatMap(q => findSourceMatches(q, r16Raw));
+
+    const sortedR32 = r32Raw.length > 0 
+        ? sortedR16.flatMap(r16 => findSourceMatches(r16, r32Raw)) 
+        : [];
 
     return {
         final,
         thirdPlace,
-        semiFinals,
-        quarterFinals,
-        roundOf16,
-        roundOf32,
-        groupStage
+        semiFinals: semisRaw,
+        quarterFinals: sortedQuarters.filter(Boolean),
+        roundOf16: sortedR16.filter(Boolean),
+        roundOf32: sortedR32.filter(Boolean),
+        groupStage: all.slice(0, cursor)
     };
 };
