@@ -10,10 +10,10 @@ const FileUploader = () => {
     const isLoaded = useSelector((state) => state.tournament.isLoaded);
 
     const fileConfigs = {
-        matches: { label: 'Matches CSV', idKey: 'id' },
-        players: { label: 'Players CSV', idKey: 'id' },
-        records: { label: 'Records CSV', idKey: 'id' },
-        teams: { label: 'Teams CSV', idKey: 'id' },
+        matches: { label: 'Matches CSV', idKey: 'ID' },
+        players: { label: 'Players CSV', idKey: 'ID' },
+        records: { label: 'Records CSV', idKey: 'ID' },
+        teams: { label: 'Teams CSV', idKey: 'ID' },
     };
 
     const [files, setFiles] = useState({

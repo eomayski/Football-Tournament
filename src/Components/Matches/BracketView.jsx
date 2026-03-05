@@ -1,169 +1,67 @@
+import { useSelector } from "react-redux";
 import FileUploader from "../FileUploader.jsx";
 import GroupStage from "./GroupeView.jsx";
 import MatchCard from "./MatchCard.jsx";
+import { organizeTournament } from "../../utils/organizeTournament.js";
 
 const BracketView = () => {
+    const { matches, teams } = useSelector(state => state.tournament);
+    
+    const organized = organizeTournament(matches);
+
+    const phases = [
+        { title: "Round of 32", data: organized.roundOf32 },
+        { title: "Round of 16", data: organized.roundOf16 },
+        { title: "Quarterfinals", data: organized.quarterFinals },
+        { title: "Semifinals", data: organized.semiFinals },
+        { title: "Third Place", data: organized.thirdPlace ? [organized.thirdPlace] : [] },
+        { title: "Final", data: organized.final ? [organized.final] : [] },
+    ].filter(phase => phase.data && phase.data.length > 0);
+
     return (
         <div className="bracket-wrapper">
-            <FileUploader/>
-            <GroupStage/>
+            <FileUploader />
+            <GroupStage />
+            
             <div className="bracket-container">
-
-                {/* Round of 16 Column */}
-                <div className="bracket-column">
-                    <section className="bracket-title">
-                        <h2 className="column-title">Round of 16</h2>
-                    </section>
-                    <div className="bracket-matches-container">
-
-                        <section className="bracket-matches">
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="1" />
-                            <MatchCard team1="Team One" score1="0" team2="Team Two" score2="3" />
-                            <MatchCard team1="Team One" score1="1" team2="Team Two" score2="2" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="1" />
-                            <MatchCard team1="Team One" score1="0" team2="Team Two" score2="3" />
-                            <MatchCard team1="Team One" score1="1" team2="Team Two" score2="2" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
+                {phases.map((phase) => (
+                    <div className="bracket-column" key={phase.title}>
+                        <section className="bracket-title">
+                            <h2 className="column-title">{phase.title}</h2>
                         </section>
-                        <section className="bracket-separators">
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                        </section>
+
+                        <div className="bracket-matches-container">
+                            <section className="bracket-matches">
+                                {phase.data.map((match) => {
+                                    // Тук разделяме резултата (напр. "2-1") за MatchCard
+                                    const [s1, s2] = match.Score.split('-');
+                                    
+                                    return (
+                                        <MatchCard 
+                                            key={match.ID}
+                                            // Вземаме името на отбора от обекта teams по неговото ID
+                                            team1={teams[match.ATeamID]?.Name || `Team ${match.ATeamID}`}
+                                            score1={s1}
+                                            team2={teams[match.BTeamID]?.Name || `Team ${match.BTeamID}`}
+                                            score2={s2}
+                                            isFinal={phase.title === "Final"}
+                                            fullMatchData={match} // Подаваме целия обект, ако MatchCard има нужда от него (за дузпите)
+                                        />
+                                    );
+                                })}
+                            </section>
+
+                            {/* Генерираме автоматично сепаратори (по 2 на мач, както беше в твоя шаблон) */}
+                            {phase.title !== "Final" && phase.title !== "Third Place" && (
+                                <section className="bracket-separators">
+                                    {Array.from({ length: phase.data.length * 2 }).map((_, i) => (
+                                        <div key={i} className="separator"></div>
+                                    ))}
+                                </section>
+                            )}
+                        </div>
                     </div>
-                </div>
-
-                {/* Round of 16 Column */}
-                <div className="bracket-column">
-                    <section className="bracket-title">
-                        <h2 className="column-title">Round of 16</h2>
-                    </section>
-                    <div className="bracket-matches-container">
-
-                        <section className="bracket-matches">
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="1" />
-                            <MatchCard team1="Team One" score1="0" team2="Team Two" score2="3" />
-                            <MatchCard team1="Team One" score1="1" team2="Team Two" score2="2" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="0" />
-                        </section>
-                        <section className="bracket-separators">
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                        </section>
-                    </div>
-                </div>
-
-                {/* Quarterfinals Column */}
-                <div className="bracket-column">
-                    <section className="bracket-title">
-                        <h2 className="column-title">Quarterfinals</h2>
-                    </section>
-                    <div className="bracket-matches-container">
-                        <section className="bracket-matches">
-                            <MatchCard team1="Team One" score1="3" team2="Team Two" score2="1" />
-                            <MatchCard team1="Team One" score1="1" team2="Team Two" score2="2" />
-                            <MatchCard team1="Team One" score1="1" team2="Team Two" score2="2" />
-                            <MatchCard team1="Team One" score1="1" team2="Team Two" score2="2" />
-                        </section>
-                        <section className="bracket-separators">
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                        </section>
-                    </div>
-                </div>
-
-
-                {/* Semifinals Column */}
-                <div className="bracket-column">
-                    <section className="bracket-title">
-                        <h2 className="column-title">Semifinals</h2>
-                    </section>
-                    <div className="bracket-matches-container">
-                        <section className="bracket-matches">
-                            <MatchCard team1="Team One" score1="2" team2="Team Two" score2="1" />
-                            <MatchCard team1="Team One" score1="1" team2="Team Two" score2="2" />
-                        </section>
-                        <section className="bracket-separators">
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                            <div className="separator"></div>
-                        </section>
-                    </div>
-                </div>
-
-                {/* Final Column */}
-                <div className="bracket-column">
-                    <section className="bracket-title">
-                        <h2 className="column-title">Final</h2>
-                    </section>
-                    <section className="bracket-matches">
-                        <MatchCard team1="Team One" score1="3" team2="Team Two" score2="2" isFinal={true} />
-                    </section>
-                </div>
-
+                ))}
             </div>
         </div>
     );

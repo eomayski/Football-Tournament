@@ -6,14 +6,12 @@ export const parseCSV = (csvText, idKey) => {
 
     const headers = lines[0].split(',').map(h => h.trim());
 
-    // If provided idKey is not present in headers, fallback to first header
     const effectiveIdKey = headers.includes(idKey) ? idKey : headers[0];
 
     return lines.slice(1).reduce((acc, line, idx) => {
         const values = line.split(',').map(v => (v === undefined ? '' : v.trim()));
         const rowObject = headers.reduce((obj, h, i) => ({ ...obj, [h]: values[i] ?? '' }), {});
 
-        // Use the effective idKey; if the value is falsy, fall back to the row index to ensure uniqueness
         const key = rowObject[effectiveIdKey] || String(idx);
         acc[key] = rowObject;
         return acc;
