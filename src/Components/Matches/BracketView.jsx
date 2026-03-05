@@ -3,10 +3,11 @@ import FileUploader from "../FileUploader.jsx";
 import GroupStage from "./GroupeView.jsx";
 import MatchCard from "./MatchCard.jsx";
 import { organizeTournament } from "../../utils/organizeTournament.js";
+import { Link } from "react-router";
 
 const BracketView = () => {
     const { matches, teams } = useSelector(state => state.tournament);
-    
+
     const organized = organizeTournament(matches);
 
     const phases = [
@@ -19,10 +20,10 @@ const BracketView = () => {
     ].filter(phase => phase.data && phase.data.length > 0);
 
     return (
-        <div className="bracket-wrapper">
+        <div>
             <FileUploader />
-            <GroupStage />
-            
+            <GroupStage groupStageMatches={organized.groupStage} teams={teams}/>
+
             <div className="bracket-container">
                 {phases.map((phase) => (
                     <div className="bracket-column" key={phase.title}>
@@ -34,17 +35,19 @@ const BracketView = () => {
                             <section className="bracket-matches">
                                 {phase.data.map((match) => {
                                     const [s1, s2] = match.Score.split('-');
-                                    
+
                                     return (
-                                        <MatchCard 
-                                            key={match.ID}
-                                            team1={teams[match.ATeamID]?.Name || `Team ${match.ATeamID}`}
-                                            score1={s1}
-                                            team2={teams[match.BTeamID]?.Name || `Team ${match.BTeamID}`}
-                                            score2={s2}
-                                            isFinal={phase.title === "Final"}
-                                            fullMatchData={match}
-                                        />
+                                        <Link key={match.ID} to={`/matches/${match.ID}`}>
+                                            <MatchCard
+                                                key={match.ID}
+                                                team1={teams[match.ATeamID]?.Name || `Team ${match.ATeamID}`}
+                                                score1={s1}
+                                                team2={teams[match.BTeamID]?.Name || `Team ${match.BTeamID}`}
+                                                score2={s2}
+                                                isFinal={phase.title === "Final"}
+                                                fullMatchData={match}
+                                            />
+                                        </Link>
                                     );
                                 })}
                             </section>

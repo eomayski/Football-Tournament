@@ -32,6 +32,7 @@ body {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 /* --- Стилове за Хедъра --- */
@@ -95,6 +96,21 @@ a {
     border-color: var(--accent-blue);
 }
 
+.toast {
+    background: rgba(17, 30, 62, 0.7);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background-color: rgb(17, 30, 62, 0.5);
+    height: 100vh;
+}
 
 .site-logo {
     height: 3.5em;
@@ -106,19 +122,37 @@ a {
     height: 4em;
     width: auto;
 }
+
+
+.group-stage-wrapper {
+	display: flex;
+	gap: 1.5rem;
+	padding: 0 2em 2em 2em;
+}
+
+/* Добавяме малко помощ за колоните в групите */
+.group-column {
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.group-matches-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+
 /* --- Стилизиране на турнирната схема (Bracket) --- */
 
-.bracket-wrapper {
-    padding: 2rem;
-    overflow-x: auto;
-    min-height: calc(100vh - 8em);
-    background-color: rgb(17, 30, 62, 0.5)
-}
+
 
 .bracket-container {
     display: flex;
     gap: 22px;
-    /*TODO да го изчисля това*/
+    padding: 0 2em 2em 2em;
 }
 
 .bracket-column {
@@ -127,7 +161,6 @@ a {
     justify-content: center;
     flex-grow: 1;
     flex-shrink: 1;
-    margin-top: 2em;
 }
 
 .bracket-matches-container {
@@ -157,16 +190,14 @@ a {
     height: 100%;
 }
 
-.separator:nth-child(4n + 2)
- {
+.separator:nth-child(4n + 2) {
     border-top: 2px solid var(--accent-blue);
     border-right: 2px solid var(--accent-blue);
     border-top-right-radius: 0.5em;
 
 }
 
-.separator:nth-child(4n + 3)
- {
+.separator:nth-child(4n + 3) {
     border-bottom: 2px solid var(--accent-blue);
     border-right: 2px solid var(--accent-blue);
     position: relative;
@@ -241,6 +272,12 @@ a {
     font-size: 0.6rem;
     color: #0f172a;
     font-weight: bold;
+    overflow: hidden;
+}
+
+.team-logo img {
+    height: 100%;
+    width: auto;
 }
 
 .team-name {
@@ -273,24 +310,24 @@ a {
 /* --- Стилове за Футъра --- */
 
 .footer {
-  background-color: var(--bg-header);
-  padding: 1.5rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top: 1px solid var(--border-glow);
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
-  margin-top: auto;
+    background-color: var(--bg-header);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--border-glow);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+    margin-top: auto;
 }
 
 .footer-text {
-  color: var(--text-muted);
-  font-size: 0.875rem;
-  letter-spacing: 1px;
-  margin: 0;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    margin: 0;
 }
 
 .footer-accent {
-  color: var(--accent-blue);
-  font-weight: 600;
+    color: var(--accent-blue);
+    font-weight: 600;
 }
