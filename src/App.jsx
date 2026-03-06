@@ -3,10 +3,10 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import Footer from "./components/Footer.jsx"
 import Header from "./components/Header.jsx"
-import BracketView from "./components/Matches/BracketView.jsx"
 import { fetchFlags } from "./store/flagsSlice.js"
 import { Route, Routes } from "react-router"
 import TeamSearch from "./components/Teams/TeamSearch.jsx"
+import BracketView from "./Components/Matches/BracketView.jsx"
 
 function App() {
   const dispatch = useDispatch()

@@ -7,11 +7,12 @@ import { Provider } from 'react-redux'
 import { persistor, store } from './store/store.js'
 import { PersistGate } from 'redux-persist/integration/react'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
     <Provider store={store}>
-       <PersistGate loading={<div>Зареждане на съхранени данни...</div>} persistor={persistor}>
+       <PersistGate loading={<div className="loader"></div>} persistor={persistor}>
         <App />
        </PersistGate>
     </Provider>
