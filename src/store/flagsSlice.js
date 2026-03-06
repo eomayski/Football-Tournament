@@ -30,8 +30,6 @@ export const fetchFlags = createAsyncThunk(
             }, {});
 
             Object.assign(flagsDictionary, SPECIAL_FLAGS);
-
-            console.log('✅ Flags loaded:', Object.keys(flagsDictionary).length, 'items');
             return flagsDictionary;
         } catch (error) {
             const errorMsg = error.message || 'An unexpected error occurred';

@@ -8,7 +8,7 @@ const GroupStage = ({ groupStageMatches = [], teams = {} }) => {
             ...new Set(Object.values(teams).map((team) => team.Group))
         ];
 
-        return uniqueGroups.filter(Boolean).sort();
+        return uniqueGroups.filter(Boolean).sort((a, b) => a.localeCompare(b));
     }, [teams]);
 
     return (
@@ -24,7 +24,7 @@ const GroupStage = ({ groupStageMatches = [], teams = {} }) => {
                         key={groupName}
                         className="bracket-column"
                     >
-                        <h2 className="column-title">Група {groupName}</h2>
+                        <h2 className="column-title">Group {groupName}</h2>
 
                         <div className="bracket-matches">
                             {matchesInGroup.map((match) => {

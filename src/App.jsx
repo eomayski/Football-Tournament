@@ -6,7 +6,8 @@ import Header from "./components/Header.jsx"
 import { fetchFlags } from "./store/flagsSlice.js"
 import { Route, Routes } from "react-router"
 import TeamSearch from "./components/Teams/TeamSearch.jsx"
-import BracketView from "./Components/Matches/BracketView.jsx"
+import BracketView from "./components/Matches/BracketView.jsx"
+import MatchDetails from "./components/Matches/MatchDetails.jsx"
 
 function App() {
   const dispatch = useDispatch()
@@ -23,6 +24,7 @@ function App() {
         <Routes>
         <Route path="/" element={<BracketView />}/>
         <Route path="/matches" element={<BracketView />}/>
+        <Route path="/matches/:matchId" element={<MatchDetails/>}/>
         <Route path="/teams" element={<TeamSearch />}/>
         </Routes>
         <Footer/>

@@ -7,10 +7,12 @@
     --accent-blue: #38bdf8;
     --border-glow: rgba(56, 189, 248, 0.3);
 }
-
-body {
+*{
     margin: 0;
     padding: 0;
+}
+
+body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-image: url("/images/background.png");
     background-size: cover;
@@ -234,11 +236,14 @@ a {
     background: rgba(17, 30, 62, 0.7);
     border: 1px solid rgba(56, 189, 248, 0.4);
     border-radius: 8px;
-    padding: 0.5rem;
+    padding: 1rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     transition: transform 0.2s ease, border-color 0.2s ease;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .match-card:hover {
@@ -249,35 +254,44 @@ a {
 
 .match-team {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 0.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 0.5rem;
+    width: 80px;
     opacity: 0.3;
 }
 
-.match-team:last-child {
-    border-bottom: none;
+.match-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
 }
 
-.team-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.match-score {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-main);
+}
+
+.match-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
 }
 
 .team-logo {
-    width: 24px;
-    height: 24px;
+    width: 2em;
+    height: 2em;
     background-color: #cbd5e1;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.6rem;
+    font-size: 1rem;
     color: #0f172a;
     font-weight: bold;
     overflow: hidden;
+    border: 2px solid transparent;
 }
 
 .team-logo img {
@@ -288,17 +302,17 @@ a {
 .team-name {
     font-size: 0.9rem;
     font-weight: 500;
-}
-
-.team-score {
-    font-weight: 700;
-    font-size: 1rem;
+    text-align: center;
 }
 
 /* Акцент за победителя */
-.winner .team-name,
-.winner .team-score {
+.winner .team-name {
     color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.winner .team-logo {
+    border-color: var(--accent-blue);
 }
 
 .winner {

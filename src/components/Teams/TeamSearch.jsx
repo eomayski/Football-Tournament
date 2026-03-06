@@ -65,17 +65,23 @@ export default function TeamSearch() {
             let valA = a[sortConfig.key];
             let valB = b[sortConfig.key];
 
+            // 1. Сортиране на числа (например TeamNumber)
             if (sortConfig.key === 'TeamNumber') {
                 valA = parseInt(valA, 10) || 0;
                 valB = parseInt(valB, 10) || 0;
-            } else {
-                valA = String(valA || '').toLowerCase();
-                valB = String(valB || '').toLowerCase();
+
+                return sortConfig.direction === 'asc' ? valA - valB : valB - valA;
             }
 
-            if (valA < valB) return sortConfig.direction === 'asc' ? -1 : 1;
-            if (valA > valB) return sortConfig.direction === 'asc' ? 1 : -1;
-            return 0;
+            // 2. Сортиране на текст (имена, позиции и др.) с localeCompare
+            valA = String(valA || '');
+            valB = String(valB || '');
+
+            // Използваме localeCompare, като задаваме 'base' чувствителност, 
+            // за да игнорира главни/малки букви автоматично.
+            const compareResult = valA.localeCompare(valB, undefined, { sensitivity: 'base' });
+
+            return sortConfig.direction === 'asc' ? compareResult : -compareResult;
         });
 
         return teamPlayers;
