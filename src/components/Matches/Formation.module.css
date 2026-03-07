@@ -1,0 +1,67 @@
+/* --- MAIN CONTAINER --- */
+.footballPitch {
+    width: 450px; 
+    height: 600px; 
+    background-image: url('/images/pitch.png');
+    background-color: #2e7d32; /* Fallback color */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    border: 1px solid var(--accent-blue);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.2);
+    
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    padding: 20px 25px;
+    box-sizing: border-box;
+}
+
+/* Rows */
+.category {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+/* Height distribution */
+.forwards { flex: 1.5; }    
+.midfielders { flex: 1.5; } 
+.defenders { flex: 1.5; align-items: center; padding-bottom: 5px; } 
+.goalkeeper { flex: 0.5; align-items: flex-end; justify-content: center; } 
+
+/* Columns */
+.colCenter {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+}
+
+.colSide {
+    display: flex;
+    align-items: center; 
+    width: fit-content; 
+}
+
+.leftWing {
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+    padding-left: 10px;
+}
+.rightWing { justify-content: flex-end; padding-right: 10px; }
+
+.defenseSide {
+    align-items: center; 
+    gap: 10px; 
+}
+
+.defenseSideLeft {
+    flex-direction: row-reverse;
+}
+
+
+

@@ -7,7 +7,8 @@
     --accent-blue: #38bdf8;
     --border-glow: rgba(56, 189, 248, 0.3);
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
 }
@@ -99,23 +100,26 @@ a {
     position: absolute;
     top: calc(50vh - 11px);
     left: calc(50vw - 11px);
-  --d:22px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  color: var(--accent-blue);
-  box-shadow: 
-    calc(1*var(--d))      calc(0*var(--d))     0 0,
-    calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1px,
-    calc(0*var(--d))      calc(1*var(--d))     0 2px,
-    calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3px,
-    calc(-1*var(--d))     calc(0*var(--d))     0 4px,
-    calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5px,
-    calc(0*var(--d))      calc(-1*var(--d))    0 6px;
-  animation: l27 1s infinite steps(8);
+    --d: 22px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    color: var(--accent-blue);
+    box-shadow:
+        calc(1*var(--d)) calc(0*var(--d)) 0 0,
+        calc(0.707*var(--d)) calc(0.707*var(--d)) 0 1px,
+        calc(0*var(--d)) calc(1*var(--d)) 0 2px,
+        calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3px,
+        calc(-1*var(--d)) calc(0*var(--d)) 0 4px,
+        calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5px,
+        calc(0*var(--d)) calc(-1*var(--d)) 0 6px;
+    animation: l27 1s infinite steps(8);
 }
+
 @keyframes l27 {
-  100% {transform: rotate(1turn)}
+    100% {
+        transform: rotate(1turn)
+    }
 }
 
 .wrapper {
@@ -324,6 +328,15 @@ a {
     border: 2px solid #fbbf24;
     background: rgba(17, 30, 62, 0.9);
     box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+.match-details {
+    margin: auto 3em;
+}
+
+.formations-container {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 /* --- Стилове за Футъра --- */

@@ -1,0 +1,71 @@
+
+/* --- PLAYER ELEMENT STYLING --- */
+.pos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    max-width: 4em;
+    transition: transform 0.2s ease;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.pos:hover {
+    transform: scale(1.1);
+}
+
+.pos:hover .topLabel,
+.pos:hover .bottomLabel {
+    background: rgba(17, 30, 62, 0.7);
+}
+
+/* Icon styling */
+.shirtIcon {
+    font-size: 1.5em;
+    margin: 2px 0;
+}
+
+.left .shirtIcon {
+    color: red;
+}
+
+/* Text Labels */
+.label {
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+
+.topLabel i,
+.topLabel .red{
+    color: red;
+}
+
+.bottomLabel i{
+    color: green;
+}
+
+
+
+.topLabel:hover,
+.bottomLabel:hover {
+    background: rgba(17, 30, 62, 0.7);
+}
+
+.lw, .rw {
+    margin-top: 50px;
+}
+
+.lwb, .rwb {
+    margin-bottom: 50px;
+}
+
+.gk .shirtIcon {
+    color: #FFC107; 
+}
