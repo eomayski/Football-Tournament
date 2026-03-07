@@ -7,7 +7,7 @@
     justify-content: center;
     text-align: center;
     cursor: pointer;
-    max-width: 4em;
+    width: 4em;
     transition: transform 0.2s ease;
     color: white;
     text-shadow: 1px 1px 2px black;
@@ -64,6 +64,14 @@
 
 .lwb, .rwb {
     margin-bottom: 50px;
+}
+
+.red {
+    color: rgb(232, 53, 53);
+}
+
+.blue {
+    color: rgb(34, 34, 176);
 }
 
 .gk .shirtIcon {

@@ -17,12 +17,13 @@
     justify-content: space-between; 
     padding: 20px 25px;
     box-sizing: border-box;
+    margin-bottom: 2em;
 }
 
 /* Rows */
 .category {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     width: 100%;
 }
 
@@ -62,6 +63,3 @@
 .defenseSideLeft {
     flex-direction: row-reverse;
 }
-
-
-

@@ -4,7 +4,7 @@
     flex-direction: column;
     gap: 1.5rem;
     width: 100%;
-    max-width: 40%;
+    max-width: 60%;
     margin: 2em auto;
 }
 
@@ -132,6 +132,7 @@
 
 .tableHeader {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 1em;
     background: var(--bg-header);
@@ -145,6 +146,10 @@
     font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.manager {
+    color: var(--accent-blue);
 }
 
 .table {
@@ -162,7 +167,7 @@
 
 .table tbody {
     display: block;
-    max-height:50svh;
+    max-height: 50svh;
     overflow-y: auto;
     scrollbar-width: none;
 }
@@ -234,4 +239,21 @@
 
 .posFW {
     color: #f87171;
+}
+
+@media (max-width: 880px) {
+    .container {
+        max-width: 90%
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    th:nth-child(1),
+    th:nth-child(3){
+        width: 6em;
+        white-space: nowrap;
+    }
 }

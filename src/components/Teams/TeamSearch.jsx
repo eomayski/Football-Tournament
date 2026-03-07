@@ -111,6 +111,7 @@ export default function TeamSearch() {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
+    
     return (
         <div className={styles.container}>
 
@@ -162,6 +163,7 @@ export default function TeamSearch() {
                 </div>
             </div>
 
+            
             {/* PLAYER ROSTER TABLE */}
             {chosenTeam && (
                 <div key={chosenTeam.ID} className={styles.tableWrapper}>
@@ -170,6 +172,7 @@ export default function TeamSearch() {
                             Team: {chosenTeam.Name}
                         </h2>
                         <div className="team-logo"><img src={flags[chosenTeam.Name]} alt={chosenTeam.Name.substring(0, 2).toUpperCase()} /></div>
+                        <p className={styles.manager}>Manager: {chosenTeam.ManagerFullName}</p>
                     </div>
 
                     <table className={styles.table}>

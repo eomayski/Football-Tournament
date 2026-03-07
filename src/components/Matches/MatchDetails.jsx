@@ -16,7 +16,7 @@ export default function MatchDetails() {
 
     return (
         <>
-            <section className="match-details">
+            <section className="top-match">
                             <MatchCard
                                 key={match.ID}
                                 team1={teams[match.ATeamID]?.Name || `Team ${match.ATeamID}`}

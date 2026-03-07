@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     background-image: url("/images/background.png");
     background-size: cover;
     background-position: center;
@@ -31,6 +31,7 @@ a {
 }
 
 .header {
+    position: relative;
     background-color: var(--bg-header);
     padding: 0 2rem;
     display: flex;
@@ -63,6 +64,9 @@ a {
     height: 4.5em;
 }
 
+.logo-link {
+    position: absolute;
+}
 .nav-link {
     text-decoration: none;
     color: var(--text-muted);
@@ -138,6 +142,8 @@ a {
 
 .group-stage-wrapper {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
     padding: 0 2em 2em 2em;
 }
@@ -164,14 +170,14 @@ a {
     display: flex;
     gap: 22px;
     padding: 0 2em 2em 2em;
+    justify-content: center;
 }
 
 .bracket-column {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-grow: 1;
-    flex-shrink: 1;
+    width: fit-content;
 }
 
 .bracket-matches-container {
@@ -240,7 +246,7 @@ a {
     background: rgba(17, 30, 62, 0.7);
     border: 1px solid rgba(56, 189, 248, 0.4);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0.5em;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     transition: transform 0.2s ease, border-color 0.2s ease;
@@ -248,6 +254,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 100px;
 }
 
 .match-card:hover {
@@ -270,11 +277,12 @@ a {
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
+    padding: 0 0.5em;
 }
 
 .match-score {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: var(--text-main);
 }
 
@@ -284,18 +292,19 @@ a {
 }
 
 .team-logo {
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     background-color: #cbd5e1;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 0.9em;
     color: #0f172a;
     font-weight: bold;
     overflow: hidden;
     border: 2px solid transparent;
+    flex-shrink: 0;
 }
 
 .team-logo img {
@@ -312,7 +321,6 @@ a {
 /* Акцент за победителя */
 .winner .team-name {
     color: var(--accent-blue);
-    font-weight: 700;
 }
 
 .winner .team-logo {
@@ -323,15 +331,15 @@ a {
     opacity: 1;
 }
 
+.top-match{
+    margin: 2em auto;
+}
+
 /* Специален стил за Финала */
 .final-card {
     border: 2px solid #fbbf24;
     background: rgba(17, 30, 62, 0.9);
     box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
-}
-
-.match-details {
-    margin: auto 3em;
 }
 
 .formations-container {
@@ -362,4 +370,54 @@ a {
 .footer-accent {
     color: var(--accent-blue);
     font-weight: 600;
+}
+
+@media (max-width: 1720px) {
+    .group-stage-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .group-stage-wrapper {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        justify-items: center;
+    }
+
+
+    .match-card {
+        flex-direction: column;
+        gap: 0.5em;
+        height: 210px;
+    }
+
+    .formations-container {
+    flex-direction: column;
+    align-items: center;
+    }
+}
+
+@media (max-width: 800px) {
+    .group-stage-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .match-card {
+        flex-direction: row;
+        gap: 0.1em;
+    }
+
+    .bracket-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bracket-separators {
+        display: none;
+    }
 }

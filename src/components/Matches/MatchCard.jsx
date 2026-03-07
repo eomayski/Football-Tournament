@@ -11,7 +11,7 @@ const MatchCard = ({ team1, team2, score1, score2, isFinal = false, fullMatchDat
         <div className={`match-card ${isFinal ? 'final-card' : ''}`}>
             <div className={`match-team ${winner === 1 ? 'winner' : ''}`}>
                 <div className="team-logo"><img src={flags[team1]} alt={team1.substring(0, 2).toUpperCase()} /></div>
-                <span className="team-name">{team1}</span>
+                <div className="team-name">{team1}</div>
             </div>
 
             <div className="match-details">
@@ -21,7 +21,7 @@ const MatchCard = ({ team1, team2, score1, score2, isFinal = false, fullMatchDat
 
             <div className={`match-team ${winner === 2 ? 'winner' : ''}`}>
                 <div className="team-logo"><img src={flags[team2]} alt={team2.substring(0, 2).toUpperCase()} /></div>
-                <span className="team-name">{team2}</span>
+                <div className="team-name">{team2}</div>
             </div>
         </div>
     );
