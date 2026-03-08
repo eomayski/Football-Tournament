@@ -7,7 +7,7 @@
     justify-content: center;
     text-align: center;
     cursor: pointer;
-    width: 4em;
+    width: 5em;
     transition: transform 0.2s ease;
     color: white;
     text-shadow: 1px 1px 2px black;
@@ -15,6 +15,7 @@
 
 .pos:hover {
     transform: scale(1.1);
+    z-index: 10;
 }
 
 .pos:hover .topLabel,

@@ -28,9 +28,9 @@
 }
 
 /* Height distribution */
-.forwards { flex: 1.5; }    
-.midfielders { flex: 1.5; } 
-.defenders { flex: 1.5; align-items: center; padding-bottom: 5px; } 
+.forwards { flex: 1.5; justify-content: center;}    
+.midfielders { flex: 1.5; justify-content: center;} 
+.defenders { flex: 1.5; align-items: center; padding-bottom: 5px; justify-content: center;} 
 .goalkeeper { flex: 0.5; align-items: flex-end; justify-content: center; } 
 
 /* Columns */

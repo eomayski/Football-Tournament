@@ -56,7 +56,7 @@ const FileUploader = () => {
         return (
             <div className={styles.uploaderWrapper}>
                 <div className={`${styles.uploaderCard} ${styles.textCenter}`}>
-                    <p className={styles.successText}>✅ Tournament Data uploaded successfully.</p>
+                    <p className={styles.successText}><i class="fa-solid fa-circle-check"></i> Tournament Data uploaded successfully.</p>
                     <button
                         onClick={() => dispatch(resetData())}
                         className={`${styles.btn} ${styles.btnOutline}`}

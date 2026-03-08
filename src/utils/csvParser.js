@@ -8,11 +8,11 @@ export const parseCSV = (csvText, idKey) => {
 
     const effectiveIdKey = headers.includes(idKey) ? idKey : headers[0];
 
-    return lines.slice(1).reduce((acc, line, idx) => {
+    return lines.slice(1).reduce((acc, line, index) => {
         const values = line.split(',').map(v => (v === undefined ? '' : v.trim()));
         const rowObject = headers.reduce((obj, h, i) => ({ ...obj, [h]: values[i] ?? '' }), {});
 
-        const key = rowObject[effectiveIdKey] || String(idx);
+        const key = rowObject[effectiveIdKey] || String(index);
         acc[key] = rowObject;
         return acc;
     }, {});

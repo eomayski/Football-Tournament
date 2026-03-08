@@ -17,7 +17,6 @@ const Player = ({ player, position, className, players, teamColor }) => {
 
             <i
                 className={`fa-solid fa-shirt ${styles.shirtIcon} ${styles[iconStyle]}`}
-            // style={iconStyle}
             ></i>
 
             {subName && <div className={`${styles.label} ${styles.bottomLabel}`}><i className="fa-solid fa-up-long"></i>{subName}</div>}

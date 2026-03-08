@@ -5,14 +5,12 @@ const Header = () => {
     return (
         <header className="header">
 
-            {/* Лого / Заглавие */}
                 <Link to="/" className='logo-link'>
             <div className="header-logo">
                 <img className='site-logo' src={Logo} alt="Logo" />
             </div>
                 </Link>
 
-            {/* Навигация с NavLink */}
             <nav className="header-nav">
                 <NavLink
                     to="/"
