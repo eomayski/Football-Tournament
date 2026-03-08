@@ -8,6 +8,8 @@ import { Route, Routes } from "react-router"
 import TeamSearch from "./components/Teams/TeamSearch.jsx"
 import BracketView from "./components/Matches/BracketView.jsx"
 import MatchDetails from "./components/Matches/MatchDetails.jsx"
+import NotFound from "./components/NotFound/NotFound.jsx"
+
 
 function App() {
   const dispatch = useDispatch()
@@ -26,6 +28,7 @@ function App() {
         <Route path="/matches" element={<BracketView />}/>
         <Route path="/matches/:matchId" element={<MatchDetails/>}/>
         <Route path="/teams" element={<TeamSearch />}/>
+        <Route path="*" element={<NotFound />}/>
         </Routes>
         <Footer/>
         </div>

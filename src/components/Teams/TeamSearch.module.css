@@ -132,7 +132,6 @@
 
 .tableHeader {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 1em;
     background: var(--bg-header);
@@ -149,6 +148,11 @@
 }
 
 .manager {
+    margin-left: auto;
+    color: var(--text-muted);
+}
+
+.managerName {
     color: var(--accent-blue);
 }
 

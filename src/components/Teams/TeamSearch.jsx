@@ -65,7 +65,6 @@ export default function TeamSearch() {
             let valA = a[sortConfig.key];
             let valB = b[sortConfig.key];
 
-            // 1. Сортиране на числа (например TeamNumber)
             if (sortConfig.key === 'TeamNumber') {
                 valA = parseInt(valA, 10) || 0;
                 valB = parseInt(valB, 10) || 0;
@@ -73,12 +72,10 @@ export default function TeamSearch() {
                 return sortConfig.direction === 'asc' ? valA - valB : valB - valA;
             }
 
-            // 2. Сортиране на текст (имена, позиции и др.) с localeCompare
             valA = String(valA || '');
             valB = String(valB || '');
 
-            // Използваме localeCompare, като задаваме 'base' чувствителност, 
-            // за да игнорира главни/малки букви автоматично.
+
             const compareResult = valA.localeCompare(valB, undefined, { sensitivity: 'base' });
 
             return sortConfig.direction === 'asc' ? compareResult : -compareResult;
@@ -168,11 +165,11 @@ export default function TeamSearch() {
             {chosenTeam && (
                 <div key={chosenTeam.ID} className={styles.tableWrapper}>
                     <div className={styles.tableHeader}>
-                        <h2 className={styles.teamName}>
-                            Team: {chosenTeam.Name}
-                        </h2>
-                        <div className="team-logo"><img src={flags[chosenTeam.Name]} alt={chosenTeam.Name.substring(0, 2).toUpperCase()} /></div>
-                        <p className={styles.manager}>Manager: {chosenTeam.ManagerFullName}</p>
+                        <div className="team-logo">
+                            <img src={flags[chosenTeam.Name]} alt={chosenTeam.Name.substring(0, 2).toUpperCase()} />
+                        </div>
+                        <h2 className={styles.teamName}>Team: {chosenTeam.Name}</h2>    
+                        <p className={styles.manager}>Manager: <span className={styles.managerName}>{chosenTeam.ManagerFullName}</span></p>
                     </div>
 
                     <table className={styles.table}>
@@ -182,19 +179,19 @@ export default function TeamSearch() {
                                     className={`${styles.th} ${styles.colNumber}`}
                                     onClick={() => handleSort('TeamNumber')}
                                 >
-                                    Number {sortConfig.key === 'TeamNumber' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
+                                    Number {sortConfig.key === 'TeamNumber' && (sortConfig.direction === 'asc' ? '▼' : '▲')}
                                 </th>
                                 <th
                                     className={`${styles.th} ${styles.colName}`}
                                     onClick={() => handleSort('FullName')}
                                 >
-                                    Name {sortConfig.key === 'FullName' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
+                                    Name {sortConfig.key === 'FullName' && (sortConfig.direction === 'asc' ? '▼' : '▲')}
                                 </th>
                                 <th
                                     className={`${styles.th} ${styles.colPosition}`}
                                     onClick={() => handleSort('MappedPosition')}
                                 >
-                                    Position {sortConfig.key === 'MappedPosition' && (sortConfig.direction === 'asc' ? '▲' : '▼')}
+                                    Position {sortConfig.key === 'MappedPosition' && (sortConfig.direction === 'asc' ? '▼' : '▲')}
                                 </th>
                             </tr>
                         </thead>
