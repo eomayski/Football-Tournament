@@ -101,6 +101,7 @@ The application expects 4 CSV files with specific column headers. The key identi
 4.  **teams.csv**: Information about teams.
 
 Ensure files are correctly formatted before uploading.
+Ready assets are provided in /publick/assets directory.
 
 ## 📂 Project Structure
 ```
