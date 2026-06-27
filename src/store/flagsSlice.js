@@ -7,6 +7,7 @@ const UK_NATIONS = {
     'Scotland': 'gb-sct',
     'Wales': 'gb-wls',
     'Northern Ireland': 'gb-nir',
+    'Czech Republic' : 'cz'
 };
 
 export const fetchFlags = createAsyncThunk(
