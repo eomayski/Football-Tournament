@@ -1,9 +1,10 @@
 import { ToastContainer } from "react-toastify"
-import { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useEffect, useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import Footer from "./components/Footer.jsx"
 import Header from "./components/Header.jsx"
 import { fetchFlags } from "./store/flagsSlice.js"
+import { loadDefaultData } from "./store/tournamentSlice.js"
 import { Route, Routes } from "react-router"
 import TeamSearch from "./components/Teams/TeamSearch.jsx"
 import BracketView from "./components/Matches/BracketView.jsx"
@@ -13,9 +14,17 @@ import NotFound from "./components/NotFound/NotFound.jsx"
 
 function App() {
   const dispatch = useDispatch()
+  const isLoaded = useSelector((state) => state.tournament.isLoaded)
+  const initialIsLoaded = useRef(isLoaded)
 
   useEffect(() => {
     dispatch(fetchFlags())
+  }, [dispatch])
+
+  useEffect(() => {
+    if (!initialIsLoaded.current) {
+      dispatch(loadDefaultData())
+    }
   }, [dispatch])
 
   return (
